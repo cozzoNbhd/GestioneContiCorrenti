@@ -15,7 +15,7 @@ public class GestioneContiCorrenti {
 
     public static Map<String, LongAdder> m = new ConcurrentHashMap<>();
 
-    public static class Transazione implements Runnable {
+    public static class Transazione{
         private String date;
         private String reason;
 
@@ -32,10 +32,6 @@ public class GestioneContiCorrenti {
             return reason;
         }
 
-        @Override
-        public void run() {
-
-        }
     }
 
     public static class ContoCorrente implements Runnable {
@@ -67,7 +63,7 @@ public class GestioneContiCorrenti {
 
         Gson gson = new Gson();
 
-        ExecutorService service = Executors.newFixedThreadPool(10);
+        ExecutorService service = Executors.newFixedThreadPool(20);
 
         try {
             reader = new JsonReader(new FileReader("C:\\Users\\cozzo\\OneDrive\\Desktop\\accounts.json"));
